@@ -92,10 +92,10 @@ public class Maths {
             minimums[j]=maxVal;
         }
 
-        //System.out.println(simu.length);
-        //System.out.print(simu[0].length);
+       // System.out.println(simu.length);
+       // System.out.print(simu[0].length);
        //show(simu,simu.length,simu[0].length);
-       //show(minimums,simu.length);
+     // show(minimums,simu.length);
         return minimums;
     }
     public static double calculMTBF(double[] simu){
@@ -144,6 +144,7 @@ public class Maths {
      */
     public static double[] simulationParMoisEnSerie(int nbIteration,int nbPostes ,double tauxDefaillance){
         double[] listCroissante = minSimu(simulationLoiExpCroissant(nbIteration,nbPostes,tauxDefaillance));
+        Arrays.sort(listCroissante);
         double[] listeCumul = new double[(int)listCroissante[nbIteration-1]];
 
 
@@ -172,6 +173,7 @@ public class Maths {
 
     public static double[] simulationCumuleeParMois(int nbIteration, double tauxDefaillance){
         double[] listCroissante = simulationLoiExpCroissant(nbIteration,tauxDefaillance);
+
         double[] listeCumul = new double[(int)listCroissante[nbIteration-1]];
 
 
@@ -202,6 +204,8 @@ public class Maths {
      */
     public static double[] simulationCumuleeParMoisEnSerie(int nbIteration, int nbPostes ,double tauxDefaillance){
         double[] listCroissante = minSimu(simulationLoiExpCroissant(nbIteration,nbPostes,tauxDefaillance));
+        Arrays.sort(listCroissante);
+        //show(listCroissante,listCroissante.length);
         double[] listeCumul = new double[(int)listCroissante[nbIteration-1]];
 
 
@@ -219,7 +223,8 @@ public class Maths {
             listeCumul[j]=cumul;
         }
 
-        show(listeCumul,(int)listCroissante[nbIteration-1]);
+
+        show(listeCumul,listeCumul.length);
         return listeCumul;
     }
 
