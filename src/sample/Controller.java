@@ -1,6 +1,6 @@
 package sample;
 
-import com.sun.javaws.exceptions.ErrorCodeResponseException;
+//import com.sun.javaws.exceptions.ErrorCodeResponseException;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -121,27 +121,20 @@ public class Controller {
     }
 
     public void updateFiabiliteGraphe() {
-        fiabiliteY.setUpperBound(Model.fiabilite.get(0)+5);
-        for (int i =0; i < Model.nbJourFiabilite; i++) {
-            XYChart.Series serie = new XYChart.Series();
-            serie.getData().add(new XYChart.Data<>("Jour " + i, Model.fiabilite.get(i)));
+        fiabiliteY.setUpperBound(Model.fiabiliteMois[0]);
+        XYChart.Series serie = new XYChart.Series();
+        for (int i =0; i < Model.fiabiliteMois.length; i++) {
+            serie.getData().add(new XYChart.Data<String, Number>("Jour " + i, Model.fiabiliteMois[i]));
             //System.out.println(Model.fiabilite.get(i));
-            grapheFiabilite.getData().addAll(serie);
-            Tooltip t = new Tooltip(String.valueOf(Model.fiabilite.get(i)));
-            Tooltip.install(serie.getNode(), t);
-        }
 
-        // adding tooltips
-        for (int i =0; i < Model.nbJourFiabilite; i++) {
 
         }
-
+        grapheFiabilite.getData().add(serie);
     }
 
     public void initialize() throws Exception{
         fiabiliteY.setUpperBound(100);
         validerParametres();
-        updateVueDepuisModel();
     }
 
     private void erreurParametresIncorrects(String nomParametre) {

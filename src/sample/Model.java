@@ -24,6 +24,8 @@ public class Model {
 
     public static ArrayList<Double> fiabilite;
 
+    public static double[] fiabiliteMois;
+
 
     public static void calculerFiabilite() {
         fiabilite = new ArrayList<Double>();
@@ -31,6 +33,13 @@ public class Model {
             fiabilite.add(Maths.loideSurvie(periodeOeuvre * i, tauxDefaillance * nbPoste)*100);
             System.out.println(fiabilite.get(i-1));
         }
+    }
+
+    public static void calculerFiabiliteParMois() {
+        fiabiliteMois = Maths.simulationCumuleeParMoisEnSerie(nbJourFiabilite,nbPoste,tauxDefaillance);
+
+
+
     }
 
 
